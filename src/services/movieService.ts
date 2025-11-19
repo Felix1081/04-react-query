@@ -14,7 +14,7 @@ interface FetchMovieParams {
   year?: string;
 }
 
-interface FetchMovieResponce {
+export interface FetchMovieResponse {
   page: number;
   results: Movie[];
   total_pages: number;
@@ -23,8 +23,8 @@ interface FetchMovieResponce {
 
 export async function fetchMovies(
   params: FetchMovieParams
-): Promise<FetchMovieResponce> {
-  const response = await axios.get<FetchMovieResponce>(
+): Promise<FetchMovieResponse> {
+  const response = await axios.get<FetchMovieResponse>(
     `${TMBD_BASE_URL}/search/movie`,
     { params, headers: { Authorization: `Bearer ${TMBD_TOKEN}` } }
   );
